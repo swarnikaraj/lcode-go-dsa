@@ -24,14 +24,15 @@ import (
 // Output: false
 // Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 
-var input=121
+var Input=121
 
 func isPalindrome(x int) bool {
+	
     if x < 0 {
         return false
     }
     strgint:=strconv.FormatInt(int64(x),10)
-
+   
     i:=len(strgint)-1
 
     for j:=0 ;j<len(strgint)/2 ;j++{
@@ -44,7 +45,7 @@ func isPalindrome(x int) bool {
     return true
 }
 func main(){
-   isPalindrome(input)
-   fmt.Printf("Palindrome Number problem %v", input)
+   isPalindrome(Input)
+   fmt.Printf("Palindrome Number problem %v", Input)
    
 }
