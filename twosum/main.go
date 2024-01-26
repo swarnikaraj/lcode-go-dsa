@@ -35,6 +35,8 @@ func twoSumN2(nums []int, target int) []int {
 
     return res
 }
+
+
 // time complexity (o)n
 func twoSumN1(nums []int, target int) []int {
     var mymap=make(map[int]int)
@@ -54,6 +56,8 @@ func twoSumN1(nums []int, target int) []int {
    
     return []int{-1,-1}
 }
+
+
 func main(){
 
 	fmt.Print("Two Sum Problem")
