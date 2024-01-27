@@ -168,10 +168,21 @@ func numbertringle4(n int){
 //  ***
 // *****
 func numbertriangle5(n int){
- for i:=1;i<n;i++{
+ for i:=0;i<=n;i++{
 	
-     for j:=1;j<=2*i-1;j++{
+	strs:=2*i+1
+
+	spc:=(2*n+1-strs)/2
+    for k:=1;k<=spc;k++{
+		fmt.Print(" ")
+	 }
+
+     for j:=1;j<=strs;j++{
 		fmt.Print("*")
+	 }
+
+	 for k:=1;k<=spc;k++{
+		fmt.Print(" ")
 	 }
 	 fmt.Print("\n")
  }
