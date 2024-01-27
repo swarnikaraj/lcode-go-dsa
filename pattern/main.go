@@ -168,8 +168,12 @@ func numbertringle4(n int){
 //  ***
 // *****
 func numbertriangle5(n int){
- for i:=1;i<=n;i++{
-
+ for i:=1;i<n;i++{
+	
+     for j:=1;j<=2*i-1;j++{
+		fmt.Print("*")
+	 }
+	 fmt.Print("\n")
  }
 }
 
@@ -181,5 +185,6 @@ func main(){
     numbertriangle2(4)
 	numberTriangle3(3)
 	numbertringle4(4)
+	numbertriangle5(4)
 
 }
