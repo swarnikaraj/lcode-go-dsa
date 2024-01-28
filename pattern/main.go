@@ -503,6 +503,77 @@ func pattern16(n int){
 
 	}
 }
+
+
+// Problem statement
+// Sam is curious about Alpha-Hills, so he decided to create Alpha-Hills of different sizes.
+
+// An Alpha-hill is represented by a triangle, where alphabets are filled in palindromic order.
+
+// For every value of ‘N’, help sam to return the corresponding Alpha-Hill.
+
+// Example:
+// Input: ‘N’ = 3
+
+// Output: 
+//     A
+//   A B A
+// A B C B A
+
+
+func pattern17(){
+	
+}
+
+
+
+
+
+
+
+
+
+
+// Problem statement
+// Ninja has been given a task to print the required star pattern and he asked your help for the same.
+
+// You must return an ‘N’*’N’ matrix corresponding to the given star pattern.
+
+// Example:
+// Input: ‘N’ = 4
+
+// Output: 
+
+// ****
+// *  *
+// *  *
+// ****
+
+
+func pattern21(n int){
+
+	for i:=1;i<=n;i++{
+		fmt.Print("*")
+	}
+   fmt.Print("\n")
+	for k:=1;k<=n-2;k++{
+   
+	fmt.Print("*")
+    for j:=1;j<=n-2;j++{
+		fmt.Print(" ")
+	}
+    fmt.Print("*")
+	fmt.Print("\n")
+	}
+   
+
+
+	for i:=1;i<=n;i++{
+		fmt.Print("*")
+	}
+}
+
+
 func main(){
 	pattern1(3)
 	fmt.Println("============================")
@@ -535,5 +606,6 @@ func main(){
 	 pattern15(4)
      fmt.Println("============================")
 	 pattern16(4)
-
+	 fmt.Println("============================")
+     pattern21(5)
 }
