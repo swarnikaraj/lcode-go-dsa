@@ -505,6 +505,7 @@ func pattern16(n int){
 }
 
 
+
 // Problem statement
 // Sam is curious about Alpha-Hills, so he decided to create Alpha-Hills of different sizes.
 
@@ -520,18 +521,183 @@ func pattern16(n int){
 //   A B A
 // A B C B A
 
-
-func pattern17(){
+ func pattern17(n int){
 	
+	for i:=1;i<=n;i++{
+       rows:=2*i-1
+        printVal:='A'
+         
+		   median:=(rows+1)/2
+		   spaces:=n-median
+       for j:=1;j<=spaces;j++{
+         fmt.Print(" ")
+        }
+      for j:=1;j<=rows;j++{
+        fmt.Print(string(printVal))
+         if(j<median){
+           printVal++
+		 }else{
+			printVal--
+		 }
+		
+	  }
+
+	  fmt.Print("\n")
+	}
+ }
+
+
+
+
+// Problem statement
+// Sam is researching on Alpha-Triangles. So, he needs to create them for different integers ‘N’.
+
+// An Alpha-Triangle is represented by the triangular pattern of alphabets in reverse order.
+
+// For every value of ‘N’, help sam to print the corresponding Alpha-Triangle.
+
+// Example:
+// Input: ‘N’ = 3
+
+// Output: 
+// C
+// C B 
+// C B A
+
+
+func pattern18(n int){
+	  
+	alphas:="ABCDEFGFIJKLMNOPQRSTUVWXYZ"
+	for i:=1;i<=n;i++{
+		 alphindex:=n-1
+		 
+
+		 rows:=i
+
+		 for j:=1;j<=rows;j++{
+			fmt.Print(string(alphas[alphindex]))
+			alphindex=alphindex-1
+		 }
+		 fmt.Print("\n")
+
+
+
+
+	}
 }
 
 
+// Problem statement
+// Sam is curious about symmetric patterns, so he decided to create one.
+
+// For every value of ‘N’, return the symmetry as shown in the example.
+
+// Example:
+// Input: ‘N’ = 3
+
+// Output: 
+// * * * * * * 
+// * *     * * 
+// *         * 
+// *         * 
+// * *     * * 
+// * * * * * * 
 
 
 
+func pattern19(n int){
+    // upper paer
+	 colsU:=n
+	for u:=1;u<=n;u++{
+     //left start
+    
+	 space:=2*n-2*colsU
+	 for left:=1;left<=colsU;left++{
+     fmt.Print("*")
+	 }
+     //spaces
+     for spc1:=1;spc1<=space;spc1++{
+		fmt.Print(" ")
+	 }
+	 //right stars
+	  for left:=1;left<=colsU;left++{
+	  fmt.Print("*")	
+	 }
+	 colsU=colsU-1
+     fmt.Print("\n") 
+	}
 
+    colsB:=1
 
+    for l:=1;l<=n;l++{
 
+		//left 
+   spaces2:=2*n-2*colsB
+		for l:=1;l<=colsB;l++{
+			fmt.Print("*")
+		}
+/// spaces
+		for spc2:=1;spc2<=spaces2;spc2++{
+			fmt.Print(" ")
+		}
+ 
+
+for l:=1;l<=colsB;l++{
+			fmt.Print("*")
+		}
+		colsB++
+         fmt.Print("\n")
+	}
+
+}
+
+// Problem statement
+// Sam is curious about symmetric patterns, so he decided to create one.
+
+// For every value of ‘N’, return the symmetry as shown in the example.
+
+// Example:
+// Input: ‘N’ = 3
+
+// Output: 
+// *         *
+// * *     * *
+// * * * * * *
+// * *     * *
+// *         *
+
+func pattern20(n int){
+   
+    colsB:=1
+    rows:=2*n-1
+    for l:=1;l<=rows;l++{
+
+		//left 
+      spaces2:=2*n-2*colsB
+		for l:=1;l<=colsB;l++{
+			fmt.Print("*")
+		}
+/// spaces
+		for spc2:=1;spc2<=spaces2;spc2++{
+			fmt.Print(" ")
+		}
+ 
+
+     for l:=1;l<=colsB;l++{
+			fmt.Print("*")
+		}
+
+if(l<n){
+colsB++
+}else{
+	colsB--
+}
+		
+		
+         fmt.Print("\n")
+	}
+
+}
 
 
 // Problem statement
@@ -574,6 +740,30 @@ func pattern21(n int){
 }
 
 
+// Problem statement
+// Ninja has been given a task to print the required pattern and he asked for your help with the same.
+
+// You must print a matrix corresponding to the given number pattern.
+
+// Example:
+// Input: ‘N’ = 4
+
+// Output: 
+
+// 4444444
+// 4333334
+// 4322234
+// 4321234
+// 4322234
+// 4333334
+// 4444444
+
+
+func pattern22(n int){
+
+}
+
+
 func main(){
 	pattern1(3)
 	fmt.Println("============================")
@@ -607,5 +797,20 @@ func main(){
      fmt.Println("============================")
 	 pattern16(4)
 	 fmt.Println("============================")
+     
+
+	 pattern17(4)
+	 fmt.Println("============================")
+	 pattern18(3)
+	 fmt.Println("============================")
+
+	 pattern19(4)
+
+	 fmt.Println("============================")
+
+	 pattern20(4)
+
+	 fmt.Println("============================")
      pattern21(5)
+     
 }
