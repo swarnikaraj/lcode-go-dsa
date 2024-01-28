@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Problem statement
 // Sam is making a forest visualizer. An N-dimensional forest is represented by the pattern of size NxN filled with ‘*’.
@@ -329,10 +331,60 @@ func pattern10(n int){
 // 1 0 1
 
 
+func pattern11(n int){
+    var startWith int
+	for i:=1;i<=n;i++{
+		cols:=i
+	   if isOdd:=i%2==1 ; isOdd{
+        startWith=1
+	   }else{
+		startWith=0
+	   }
+        printVal:=startWith
+		for j:=1;j<=cols;j++{
+           fmt.Print(printVal)
+		 printVal=  printVal ^ 1
+		}
+
+		fmt.Print("\n")
+	}
+}
 
 
+// Problem statement
+// Aryan and his friends are very fond of the pattern. They want to make the Reverse N-Number Crown for a given integer' N'.
 
+// Given 'N', print the corresponding pattern.
 
+// Example:
+// Input: ‘N’ = 3
+
+// Output: 
+
+// 1         1
+// 1 2     2 1
+// 1 2 3 3 2 1
+
+func pattern12(n int){
+	for i:=1;i<=n;i++{
+
+		cols:=i
+		spaces:=2*n-2*i
+		
+
+		for j:=1;j<=cols;j++{
+         fmt.Print(j)
+		}
+		for k:=1;k<=spaces;k++{
+			fmt.Print(" ")
+		}
+		for l:=cols;l>=1;l--{
+			fmt.Print(l)
+		}
+
+		fmt.Print("\n")
+	}
+}
 
 
 
@@ -432,6 +484,25 @@ func pattern15(n int){
 
 	}
 }
+
+
+func pattern16(n int){
+	 printVal := 'A'
+	for i:=1;i<=n;i++{
+       
+	  cols:=i
+         for j:=1;j<=cols;j++{
+			fmt.Print(string(printVal))
+		 }
+        printVal++
+		
+		 fmt.Print("\n")
+         
+	   
+	 
+
+	}
+}
 func main(){
 	pattern1(3)
 	fmt.Println("============================")
@@ -452,11 +523,17 @@ func main(){
 	 pattern9(3)
      fmt.Println("============================")
 	 pattern10(3)
- fmt.Println("============================")
+     fmt.Println("============================")
+	 pattern11(4)
+     fmt.Println("============================")
+	 pattern12(4)
+	 fmt.Println("============================")
 	 pattern13(4)
-fmt.Println("============================")
+     fmt.Println("============================")
 	 pattern14(4)
-fmt.Println("============================")
+     fmt.Println("============================")
 	 pattern15(4)
+     fmt.Println("============================")
+	 pattern16(4)
 
 }
