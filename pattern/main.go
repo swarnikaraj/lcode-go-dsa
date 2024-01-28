@@ -170,9 +170,9 @@ func numbertringle4(n int){
 func numbertriangle5(n int){
  for i:=0;i<=n;i++{
 	
-	strs:=2*i+1
+	strs:=2*i-1
 
-	spc:=(2*n+1-strs)/2
+	spc:=((2*n-1)-strs)/2
     for k:=1;k<=spc;k++{
 		fmt.Print(" ")
 	 }
@@ -189,13 +189,165 @@ func numbertriangle5(n int){
 }
 
 
+// Problem statement
+// Ninja was very fond of patterns. For a given integer ‘N’, he wants to make the Reverse N-Star Triangle.
+
+// Example:
+// Input: ‘N’ = 3
+
+// Output: 
+
+// *****
+//  ***
+//   *
+
+func numberTriangle6(n int){
+	for i:=0;i<n;i++{
+         
+		stars:=2*n-(2*i+1)
+		 spaces:=((2*n-1)-stars)/2
+     for j:=1;j<=spaces;j++{
+			fmt.Print(" ")
+		}
+		for j:=1;j<=stars;j++{
+			fmt.Print("*")
+		}
+
+		for j:=1;j<=spaces;j++{
+				fmt.Print(" ")
+		}
+       fmt.Print("\n")
+
+	}
+}
+
+// Problem statement
+// Ninja was very fond of patterns. For a given integer ‘N’, he wants to make the N-Star Diamond.
+
+// Example:
+// Input: ‘N’ = 3
+
+// Output: 
+
+//   *
+//  ***
+// *****
+// *****
+//  ***
+//   *
+
+
+func diamondShape1(n int){
+	// first pyramid
+	for i:=0;i<=n;i++{
+	
+	strs:=2*i-1
+
+	spc:=((2*n-1)-strs)/2
+    for k:=1;k<=spc;k++{
+		fmt.Print(" ")
+	 }
+
+     for j:=1;j<=strs;j++{
+		fmt.Print("*")
+	 }
+
+	 for k:=1;k<=spc;k++{
+		fmt.Print(" ")
+	 }
+	 fmt.Print("\n")
+   }
+
+   // upside down
+		for i:=0;i<n;i++{
+         
+		stars:=2*n-(2*i+1)
+		 spaces:=((2*n-1)-stars)/2
+        for j:=1;j<=spaces;j++{
+			fmt.Print(" ")
+		}
+		for j:=1;j<=stars;j++{
+			fmt.Print("*")
+		}
+
+		for j:=1;j<=spaces;j++{
+				fmt.Print(" ")
+		}
+       fmt.Print("\n")
+
+	}
+}
+
+// Problem statement
+// Ninja was very fond of patterns. For a given integer ‘N’, he wants to make the N-Star Rotated Triangle.
+
+// Example:
+// Input: ‘N’ = 3
+
+// Output: 
+
+// *
+// **
+// ***
+// **
+// *
+func rotedTriangle1(n int){
+
+    rows:=2*n-1
+	var stars int
+	for i:=1;i<=rows;i++{
+		
+      if(i<=n){
+    stars=i
+	
+	  }else{
+    stars =stars-1
+	  }
+
+	  for j:=1;j<=stars;j++{
+		fmt.Print("*")
+	  }
+	  fmt.Print("\n")
+
+	} 
+
+}
+
+
+// Problem statement
+// Aryan and his friends are very fond of the pattern. For a given integer ‘N’, they want to make the N-Binary Number Triangle.
+
+// You are required to print the pattern as shown in the examples below.
+
+// Example:
+// Input: ‘N’ = 3
+
+// Output: 
+
+// 1
+// 0 1
+// 1 0 1
+
+
 func main(){
 	printSquarePattern(3)
+	fmt.Println("============================")
 	trianglePrint(4)
+	fmt.Println("============================")
 	numbertriangle1(4)
+	fmt.Println("============================")
     numbertriangle2(4)
+	fmt.Println("============================")
 	numberTriangle3(3)
+	fmt.Println("============================")
 	numbertringle4(4)
+	fmt.Println("============================")
 	numbertriangle5(4)
+	fmt.Println("============================")
+	numberTriangle6(4)
+    fmt.Println("============================")
+	 diamondShape1(3)
+ fmt.Println("============================")
+	 rotedTriangle1(3)
 
 }
