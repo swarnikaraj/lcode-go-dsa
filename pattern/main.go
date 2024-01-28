@@ -16,7 +16,7 @@ import "fmt"
 // * * *
 
 
-func printSquarePattern(n int){
+func pattern1(n int){
 	for i:=1 ;i<=n;i++{
        for j:=1 ; j<=n ;j++{
 		fmt.Print("*")
@@ -42,7 +42,7 @@ func printSquarePattern(n int){
 // * *
 // * * *
 
- func trianglePrint(n int){
+ func pattern2(n int){
   for i:=1;i<=n;i++{
 	for j:=1;j<=i;j++{
 		fmt.Print("*")
@@ -80,7 +80,7 @@ func printSquarePattern(n int){
 // Sample Output 2 :
 // 1
 
-func numbertriangle1( n int){
+func pattern3( n int){
 	for i:=1;i<=n;i++{
 		for j:=1;j<=i;j++{
 			fmt.Print(j," ")
@@ -104,7 +104,7 @@ func numbertriangle1( n int){
 // 2 2 
 // 3 3 3
 
-func numbertriangle2(n int){
+func pattern4(n int){
 	for i:=1;i<=n;i++{
 		for j:=1;j<=i;j++{
           fmt.Print(i," ")
@@ -126,7 +126,7 @@ func numbertriangle2(n int){
 // *
 
 
-func numberTriangle3(n int){
+func pattern5(n int){
    for i:=0;i<n;i++{
 	for j:=0;j<n-i;j++{
 		fmt.Print("* ")
@@ -147,7 +147,7 @@ func numberTriangle3(n int){
 // 1 2
 // 1
 
-func numbertringle4(n int){
+func pattern6(n int){
    for i:=0;i<n;i++{
         for j:=0;j<n-i;j++{
 			fmt.Print(j+1," ")
@@ -167,7 +167,7 @@ func numbertringle4(n int){
 //   *
 //  ***
 // *****
-func numbertriangle5(n int){
+func pattern7(n int){
  for i:=0;i<=n;i++{
 	
 	strs:=2*i-1
@@ -201,7 +201,7 @@ func numbertriangle5(n int){
 //  ***
 //   *
 
-func numberTriangle6(n int){
+func pattern8(n int){
 	for i:=0;i<n;i++{
          
 		stars:=2*n-(2*i+1)
@@ -237,7 +237,7 @@ func numberTriangle6(n int){
 //   *
 
 
-func diamondShape1(n int){
+func pattern9(n int){
 	// first pyramid
 	for i:=0;i<=n;i++{
 	
@@ -291,7 +291,7 @@ func diamondShape1(n int){
 // ***
 // **
 // *
-func rotedTriangle1(n int){
+func pattern10(n int){
 
     rows:=2*n-1
 	var stars int
@@ -329,25 +329,134 @@ func rotedTriangle1(n int){
 // 1 0 1
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+// Problem statement
+// Aryan and his friends are very fond of patterns. For a given integer ‘N’, they want to make the Increasing Number Triangle.
+
+// Example:
+// Input: ‘N’ = 3
+
+// Output: 
+
+// 1
+// 2 3
+// 4 5 6
+func pattern13(n int){
+
+	for i:=1;i<=n;i++{
+
+		printedVal:=1
+        
+		cols:=i
+
+		for j:=1;j<=cols;j++{
+			fmt.Print(printedVal)
+			printedVal++
+		}
+       fmt.Print("\n")
+	}
+
+
+}
+
+
+// Problem statement
+// Aryan and his friends are very fond of patterns. For a given integer ‘N’, they want to make the Increasing Letter Triangle.
+
+// Example:
+// Input: ‘N’ = 3
+
+// Output: 
+
+// A
+// A B
+// A B C
+
+
+func pattern14(n int){
+  
+
+	for i:=1;i<=n;i++{
+      
+       cols:=i;
+	   printval:='A'
+	   for j:=1;j<=cols;j++{
+		fmt.Print(string(printval))
+		printval++
+	   }
+	   fmt.Print("\n")
+
+	}
+}
+
+
+// Problem statement
+// Aryan and his friends are very fond of patterns. For a given integer ‘N’, they want to make the Reverse Letter Triangle.
+
+// You must print a matrix corresponding to the given Reverse Letter Triangle.
+
+// Example:
+// Input: ‘N’ = 3
+
+// Output: 
+
+// A B C
+// A B
+// A
+
+
+func pattern15(n int){
+	for i:=0;i<=n;i++{
+       var cols=n-i+1
+       printVal:='A'
+	
+         for j:=1;j<=cols;j++{
+			fmt.Print(string(printVal))
+			printVal++
+		 }
+		 fmt.Print("\n")
+         
+	   
+	 
+
+	}
+}
 func main(){
-	printSquarePattern(3)
+	pattern1(3)
 	fmt.Println("============================")
-	trianglePrint(4)
+	pattern2(4)
 	fmt.Println("============================")
-	numbertriangle1(4)
+	pattern3(4)
 	fmt.Println("============================")
-    numbertriangle2(4)
+    pattern4(4)
 	fmt.Println("============================")
-	numberTriangle3(3)
+	pattern5(3)
 	fmt.Println("============================")
-	numbertringle4(4)
+	pattern6(4)
 	fmt.Println("============================")
-	numbertriangle5(4)
+	pattern7(4)
 	fmt.Println("============================")
-	numberTriangle6(4)
+	pattern8(4)
      fmt.Println("============================")
-	 diamondShape1(3)
+	 pattern9(3)
      fmt.Println("============================")
-	 rotedTriangle1(3)
+	 pattern10(3)
+ fmt.Println("============================")
+	 pattern13(4)
+fmt.Println("============================")
+	 pattern14(4)
+fmt.Println("============================")
+	 pattern15(4)
 
 }
