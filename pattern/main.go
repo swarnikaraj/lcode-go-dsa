@@ -345,9 +345,9 @@ func main(){
 	numbertriangle5(4)
 	fmt.Println("============================")
 	numberTriangle6(4)
-    fmt.Println("============================")
+     fmt.Println("============================")
 	 diamondShape1(3)
- fmt.Println("============================")
+     fmt.Println("============================")
 	 rotedTriangle1(3)
 
 }
