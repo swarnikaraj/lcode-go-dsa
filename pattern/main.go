@@ -760,7 +760,63 @@ func pattern21(n int){
 
 
 func pattern22(n int){
+	size:=2*n-1
+	matt:=make([][]int,size)
+    top:=0
+	bot:=size-1
+	left:=0
+	right:=size-1
+	starter:=n
+    var count int
+     for i := 0; i < size; i++ {
+        matt[i] = make([]int, size)
+     }
 
+	for count<size*size{
+
+		for i:=left;i<=right;i++{
+		matt[top][i]=starter
+		count++
+	
+	  }
+	  top++
+
+	  for j:=top;j<=bot;j++{
+		matt[j][right]=starter
+		count++
+		
+	  }
+	  right--
+	  for k:=right;k>=left;k--{
+		matt[bot][k]=starter
+		count++
+
+	  }
+	  bot--
+
+	  for l:=top;l<=bot;l++{
+		matt[l][left]=starter
+		count++
+	  }
+	  left++
+
+	 starter--
+	 
+
+	}
+     
+	 
+   
+	
+   for row:=0;row<size;row++{
+      for col:=0;col<size;col++{
+		fmt.Print(matt[row][col])
+	  }
+	  fmt.Print("\n")
+   }
+
+   
+	
 }
 
 
@@ -812,5 +868,10 @@ func main(){
 
 	 fmt.Println("============================")
      pattern21(5)
+     fmt.Println("============================")
+	 pattern22(4)
+
+
+
      
 }
