@@ -27,10 +27,10 @@ func selectionSort(arr []int) {
 
 func bubbleSort(arr[]int){
 	n:=len(arr)
-	for i:=0;i<n-1;i++{
+	for i:=0;i<n;i++{
 
-		for j:=i+1;j<n;j++{
-             if(arr[j]<arr[i]){
+		for j:=1;j<n-i;j++{
+             if(arr[j]<arr[j-1]){
 				arr[j],arr[i]=arr[i],arr[j]
 			 }
 		}
