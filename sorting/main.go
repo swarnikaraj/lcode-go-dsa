@@ -31,7 +31,7 @@ func bubbleSort(arr[]int){
 
 		for j:=1;j<n-i;j++{
              if(arr[j]<arr[j-1]){
-				arr[j],arr[i]=arr[i],arr[j]
+				arr[j],arr[j-1]=arr[j-1],arr[j]
 			 }
 		}
 	}
