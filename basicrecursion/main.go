@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // Problem statement
 // You are given an integer ‘n’.
@@ -132,6 +135,99 @@ func factorialNum(n int) []int{
 	oldarr=append(oldarr,currentfactorial )
 	return oldarr
 }
+
+
+// Problem statement
+// Given an array 'arr' of size 'n'.
+// Return an array with all the elements placed in reverse order.
+// Note:
+// You don’t need to print anything. Just implement the given function.
+// Example:
+// Input: n = 6, arr = [5, 7, 8, 1, 6, 3]
+
+// Output: [3, 6, 1, 8, 7, 5]
+
+// Explanation: After reversing the array, it looks like this [3, 6, 1, 8, 7, 5].
+
+func reverser(start int, end int, arr []int) []int{
+   if start>=end{
+	return arr
+   }
+   arr[start],arr[end]=arr[end],arr[start]
+   return reverser(start+1,end-1,arr)
+}
+func reverseArray(n int, arr []int)  []int{
+
+result :=reverser(0,n-1,arr)
+return result
+}
+
+
+// Problem statement
+// Determine if a given string ‘S’ is a palindrome using recursion. Return a Boolean value of true if it is a palindrome and false if it is not.
+
+// Note: You are not required to print anything, just implement the function. Example:
+// Input: s = "racecar"
+// Output: true
+// Explanation: "racecar" is a palindrome.
+
+func helperPalindromeChecker(start int, end int, str string) bool{
+	if start>=end {
+		return true
+	}
+	if str[start]!=str[end]{return false}
+   return helperPalindromeChecker(start+1,end-1,str)
+}
+func recursivePalindrome(str string) bool{
+    checkpalindrom:=helperPalindromeChecker(0,len(str)-1,str)
+	return checkpalindrom
+}
+
+
+// Problem statement
+// Given an integer ‘n’, return first n Fibonacci numbers using a generator function.
+
+// Example:
+// Input: ‘n’ = 5
+
+// Output: 0 1 1 2 3
+
+// Explanation: First 5 Fibonacci numbers are: 0, 1, 1, 2, and 3.
+// Note:
+// You don't need to print anything. Just implement the given function.
+
+
+func fibonacciHelper(n int) int{
+	if n==0{
+		return 0}
+   if n==1{
+	
+	return 0
+   }
+   if n==2{
+	
+	return 1
+   }
+
+   currentNum:=fibonacciHelper(n-1) + fibonacciHelper(n-2)
+   
+   
+   return currentNum
+	
+}
+
+func getAllfibonacci(n int){
+	 arr:=make([]string,n)
+	for i:=1;i<n;i++{
+		num:=fibonacciHelper(i)
+		arr[i-1]=fmt.Sprint(num)
+	}
+
+ fmt.Print(strings.Join(arr," "))
+
+
+ 
+}
 func main() {
 nNumberArrayRes:=printNNumber(6)
 fmt.Println(nNumberArrayRes)
@@ -147,4 +243,12 @@ fmt.Println(sumOfNresponse,"sum of n response")
 factorialResponse:=factorialNum(3)
 fmt.Println(factorialResponse," factorial of n response")
 
+reversearraResponse:=reverseArray(6,[]int{1,2,3,4,5,6})
+fmt.Println(reversearraResponse)
+
+
+palindromResponse:=recursivePalindrome("annna")
+fmt.Println(palindromResponse," palindrome checker response")
+
+getAllfibonacci(4)
 }
