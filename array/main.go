@@ -24,11 +24,34 @@ func findlargestNumber(n int ,arr []int) int{
 return largest
 }
 
-func main()  {
-arr:=[]int{4 ,7, 8, 6 ,7 ,6 }
-largestitem:=findlargestNumber(5,arr)
-fmt.Print(largestitem," largestitem")
+func findSecLargestAndSecondSmallest(arr []int){
 
+	for i:=0;i<2;i++{
+		for j:=1;j<len(arr)-i;j++{
+          if(arr[j]<arr[j-1]){
+			arr[j], arr[j-1]=arr[j-1],arr[j]
+		  }     
+		}
+	}
+secondlargest:=arr[len(arr)-2]
+	for i:=0;i<2;i++{
+		for j:=1;j<len(arr)-i;j++{
+          if(arr[j]>arr[j-1]){
+			arr[j], arr[j-1]=arr[j-1],arr[j]
+		  }     
+		}
+	}
+secondsmallest:=arr[1]
+	
+fmt.Println(secondsmallest," secondsmallest sorted from bubble")
+	fmt.Println(secondlargest," secondlargest sorted from bubble")
+}
+
+func main()  {
+arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
+largestitem:=findlargestNumber(5,arr)
+fmt.Println(largestitem," largestitem")
+findSecLargestAndSecondSmallest(arr)
 	
 }
 
