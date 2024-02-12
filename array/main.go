@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 // Problem statement
 // Given an array ‘arr’ of size ‘n’ find the largest element in the array.
@@ -24,34 +27,50 @@ func findlargestNumber(n int ,arr []int) int{
 return largest
 }
 
-func findSecLargestAndSecondSmallest(arr []int){
+func findSecLargestAndSecondSmallest(n int,arr []int) (int, int){
+ max:=arr[0]
+ min:=arr[0]
 
-	for i:=0;i<2;i++{
-		for j:=1;j<len(arr)-i;j++{
-          if(arr[j]<arr[j-1]){
-			arr[j], arr[j-1]=arr[j-1],arr[j]
-		  }     
+  for i:=0;i<len(arr);i++{
+     if arr[i]>max{max=arr[i]}
+	 if arr[i] <min {min=arr[i]}
+  }
+  fmt.Print(max,"Max")
+  fmt.Print(min,"min")
+    secondLargest:=math.MinInt64
+	secondSmallest:=math.MaxInt64
+  for j:=0;j<len(arr);j++{
+     if arr[j]!=max && arr[j]>secondLargest {
+		secondLargest=arr[j]
+	 }
+	  if arr[j]<secondSmallest && arr[j]!=min{
+		secondSmallest=arr[j]
+	 }
+  }
+
+return secondLargest, secondSmallest
+}
+
+func checkifArrayIssorted(n int, arr []int) bool{
+
+	res:=true
+
+	for i:=1;i<len(arr);i++{
+		if arr[i-1]>arr[i]{
+			res=false
+
 		}
 	}
-secondlargest:=arr[len(arr)-2]
-	for i:=0;i<2;i++{
-		for j:=1;j<len(arr)-i;j++{
-          if(arr[j]>arr[j-1]){
-			arr[j], arr[j-1]=arr[j-1],arr[j]
-		  }     
-		}
-	}
-secondsmallest:=arr[1]
-	
-fmt.Println(secondsmallest," secondsmallest sorted from bubble")
-	fmt.Println(secondlargest," secondlargest sorted from bubble")
+ return res
 }
 
 func main()  {
 arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 largestitem:=findlargestNumber(5,arr)
 fmt.Println(largestitem," largestitem")
-findSecLargestAndSecondSmallest(arr)
-	
+sL, sm:=findSecLargestAndSecondSmallest(5,arr)
+fmt.Printf("second largest %v and second smallest %v",sL, sm)
+	issorted:=checkifArrayIssorted(5,arr)
+	fmt.Print(issorted," sorted result")
 }
 
