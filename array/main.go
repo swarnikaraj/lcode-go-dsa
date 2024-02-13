@@ -64,6 +64,44 @@ func checkifArrayIssorted(n int, arr []int) bool{
  return res
 }
 
+func isArrySortedAndRotated(n int, nums []int)bool{
+	rotpoint:=0; res:=true
+	if(nums[0]>=nums[len(nums)-1]){
+		
+     for i:=1;i<len(nums);i++{
+    if nums[i]<nums[i-1]{
+    rotpoint=i
+	break
+	}
+      }
+	}
+
+
+      for j:=rotpoint+1;j<len(nums);j++{
+          if nums[j]<nums[j-1]  {
+			res=false
+		  }
+	  }
+	
+
+   return  res
+}
+
+func removeDuplicates(nums []int) int {
+
+    i:=0
+    j:=1
+
+    for  j<len(nums) && i<len(nums)-1{
+        
+      if nums[j]!=nums[i]{
+          nums[i+1]=nums[j]
+          i++
+      }
+      j++
+    }
+   return i+1
+}
 func main()  {
 arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 largestitem:=findlargestNumber(5,arr)
@@ -72,5 +110,10 @@ sL, sm:=findSecLargestAndSecondSmallest(5,arr)
 fmt.Printf("second largest %v and second smallest %v",sL, sm)
 	issorted:=checkifArrayIssorted(5,arr)
 	fmt.Print(issorted," sorted result")
+	nums := []int{1, 2, 2, 1}
+	issortandrot:=isArrySortedAndRotated(4,nums)
+	fmt.Println(issortandrot,"Is sorted and rotated")
+	dpres:=removeDuplicates(nums)
+	fmt.Println(dpres,"removed duplicate")
 }
 
