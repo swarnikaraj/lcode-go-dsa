@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"sort"
 )
 
 // Problem statement
@@ -102,18 +103,64 @@ func removeDuplicates(nums []int) int {
     }
    return i+1
 }
+
+func removeDuplicates2(nums []int) int {
+
+   obj:=make(map[int]int)
+
+   for i:=0;i<len(nums);i++{
+       obj[nums[i]]=nums[i]
+   }
+
+   arr:=[]int{}
+   for _, num:=range obj{
+       arr=append(arr,num)
+   }
+ sort.Ints(arr)
+  for index,ar:=range arr{
+   nums[index]=ar
+  }
+
+  return len(arr)
+}
+
+func singleNumber(nums []int) int {
+
+    obj:=make(map[int]int)
+
+    for _, num :=range nums{
+		 value, ok := obj[num]
+        if ok {
+             obj[num]= value+1
+        }else{
+             obj[num]=1
+        }
+    }
+
+    for key,_ :=range obj{
+        if obj[key]==1{
+           return obj[key]
+		}
+        
+    }
+    return -1
+}
+
 func main()  {
-arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
-largestitem:=findlargestNumber(5,arr)
-fmt.Println(largestitem," largestitem")
-sL, sm:=findSecLargestAndSecondSmallest(5,arr)
-fmt.Printf("second largest %v and second smallest %v",sL, sm)
-	issorted:=checkifArrayIssorted(5,arr)
-	fmt.Print(issorted," sorted result")
-	nums := []int{1, 2, 2, 1}
-	issortandrot:=isArrySortedAndRotated(4,nums)
-	fmt.Println(issortandrot,"Is sorted and rotated")
-	dpres:=removeDuplicates(nums)
-	fmt.Println(dpres,"removed duplicate")
+// arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
+// largestitem:=findlargestNumber(5,arr)
+// fmt.Println(largestitem," largestitem")
+// sL, sm:=findSecLargestAndSecondSmallest(5,arr)
+// fmt.Printf("second largest %v and second smallest %v",sL, sm)
+// 	issorted:=checkifArrayIssorted(5,arr)
+// 	fmt.Print(issorted," sorted result")
+// 	nums := []int{1, 2, 2, 1}
+// 	issortandrot:=isArrySortedAndRotated(4,nums)
+// 	fmt.Println(issortandrot,"Is sorted and rotated")
+// 	dpres:=removeDuplicates(nums)
+// 	fmt.Println(dpres,"removed duplicate")
+ 	nums:=[]int{4,1,2,1,2}
+	res:=singleNumber(nums)
+	fmt.Println(res," \nsingle number")
 }
 
