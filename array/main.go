@@ -229,6 +229,82 @@ func uniosOfsorted(a []int, b []int) []int{
 // [1, 2], [3], [1, 1, 1] and [1, 1, 1]
 // Here, the length of the longest subarray is 3, which is our final answer.
 
+func printsubarray(arr []int){
+for i:=0;i<len(arr);i++{
+
+	for j:=i+1;j<len(arr)+1;j++{
+		fmt.Println(arr[i:j])
+	}
+}
+}
+
+func longestSubarrayWithSumK(arr []int, K int) (int){
+	longest:=0
+    
+	
+   for i:=0;i<len(arr);i++{
+	for j:=i+1;j<len(arr);j++{
+		
+       subarray:=arr[i:j]
+	   sum:=0
+       for k:=0;k<len(subarray);k++{
+         sum=sum+subarray[k]
+	   }
+	   if sum==K && longest<len(subarray){
+		longest=len(subarray)
+		
+	   }
+	}
+   }
+
+   return  longest
+}
+
+func rotateRight(nums []int, k int)  {
+     rot:=k% int(len(nums))
+	 
+    for i:=1;i<=rot;i++{
+		temp:=nums[len(nums)-1]
+        for j:=len(nums)-2;j>=0;j--{
+            nums[j+1]=nums[j]
+        }
+        nums[0]=temp
+	}
+	fmt.Print(nums)
+}
+func rotateLeft(nums []int, k int)  {
+    rot:=k% int(len(nums))
+	 
+     for i:=1;i<=rot;i++{
+        temp:=nums[0]
+		for j:=1;j<len(nums);j++{
+           nums[j-1]=nums[j]
+		}
+         nums[len(nums)-1]=temp
+	 }
+  fmt.Print(nums)
+	 
+}
+// [1,2,3,4,5,6,7]
+func OptimizerotateRight(nums []int, k int)  {
+     k=k% int(len(nums))
+	 temp := make([]int, k+1)
+     copy(temp, nums[:k+1])
+    
+
+	for i:=1;i<=k;i++{
+     nums[i-1]=nums[k+i]
+	}
+	
+	// fmt.Println(nums)
+	for i:=0;i<len(temp);i++{
+		
+		nums[k+i]=temp[i]
+	}
+
+ fmt.Println(nums)
+}
+
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 // largestitem:=findlargestNumber(5,arr)
@@ -246,10 +322,23 @@ func main()  {
 	// res:=singleNumber(nums)
 	// fmt.Println(res," \nsingle number")
 	// moveZeroes(nums)
-var a= []int{1, 2, 3, 4, 6}
-var b =[]int {2, 3, 5}
+// var a= []int{1, 2, 3, 4, 6}
+// var b =[]int {2, 3, 5}
 
-	unionres:=uniosOfsorted(a,b)
-	fmt.Println(unionres)
+// 	// unionres:=uniosOfsorted(a,b)
+// 	// fmt.Println(unionres)
+  
+// 	printsubarray(a)
+
+// var a = []int{1, 2, 3, 1, 1, 1, 1}
+// var k=3
+// 	longesLen:=longestSubarrayWithSumK(a,k )
+
+//     fmt.Println(longesLen)
+nums:=[]int{1,2,3,4,5,6,7}
+k:=3
+// rotateLeft(nums,k)
+// rotateRight(nums,k)
+OptimizerotateRight(nums,k)
 }
 
