@@ -167,6 +167,68 @@ func moveZeroes(nums []int)  {
         nums[i]=0
     }
 }
+
+// Problem statement
+// Given two sorted arrays, ‘a’ and ‘b’, of size ‘n’ and ‘m’, respectively, return the union of the arrays.
+// The union of two sorted arrays can be defined as an array consisting of the common and the distinct elements of the two arrays. The final array should be sorted in ascending order.
+// Note: 'a' and 'b' may contain duplicate elements, but the union array must contain unique elements.
+// Example:
+// Input: ‘n’ = 5 ‘m’ = 3
+
+
+func uniosOfsorted(a []int, b []int) []int{
+  n:=len(a)
+  i:=0
+  m:=len(b)
+  j:=0
+  newarray:=make([]int,0)
+  k:=0
+ 
+   for i<n && j<m {
+	
+	if a[i]<b[j]{
+		newarray = append(newarray, a[i])
+     
+	  i++
+	  
+	}else if a[i]==b[j]{
+		newarray = append(newarray, a[i])
+		 i++
+		 j++
+	}else{
+		newarray = append(newarray, b[j])
+	  j++
+	}
+
+	k++
+  }
+   
+  for i<len(a){
+	newarray = append(newarray, a[i])
+	i++
+  }
+
+   for j<len(b){
+	newarray = append(newarray, b[j])
+	j++
+   }
+
+  return newarray
+}
+
+// Problem statement
+// You are given an array 'a' of size 'n' and an integer 'k'.
+// Find the length of the longest subarray of 'a' whose sum is equal to 'k'.
+// Example :
+// Input: ‘n’ = 7 ‘k’ = 3
+// ‘a’ = [1, 2, 3, 1, 1, 1, 1]
+
+// Output: 3
+
+// Explanation: Subarrays whose sum = ‘3’ are:
+// [1, 2], [3], [1, 1, 1] and [1, 1, 1]
+// Here, the length of the longest subarray is 3, which is our final answer.
+
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 // largestitem:=findlargestNumber(5,arr)
@@ -180,9 +242,14 @@ func main()  {
 // 	fmt.Println(issortandrot,"Is sorted and rotated")
 // 	dpres:=removeDuplicates(nums)
 // 	fmt.Println(dpres,"removed duplicate")
- 	nums:=[]int{4,1,2,1,2}
-	res:=singleNumber(nums)
-	fmt.Println(res," \nsingle number")
-	moveZeroes(nums)
+ 	// nums:=[]int{4,1,2,1,2}
+	// res:=singleNumber(nums)
+	// fmt.Println(res," \nsingle number")
+	// moveZeroes(nums)
+var a= []int{1, 2, 3, 4, 6}
+var b =[]int {2, 3, 5}
+
+	unionres:=uniosOfsorted(a,b)
+	fmt.Println(unionres)
 }
 
