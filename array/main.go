@@ -137,15 +137,36 @@ func singleNumber(nums []int) int {
         }
     }
 
-    for key,_ :=range obj{
-        if obj[key]==1{
-           return obj[key]
-		}
+    for key,value :=range obj{
+       if value==1{
+		return key
+	   }
         
     }
     return -1
 }
 
+func moveZeroes(nums []int)  {
+   nonzeros := make([]int, len(nums))
+    index:=0
+    zeros:=0
+    for i:=0;i<len(nums);i++{
+      if nums[i]!=0{
+          nonzeros[index]=nums[i]
+          index++
+      }else{
+          zeros++
+      }
+    }
+
+    for i:=0;i<index;i++{
+       nums[i] =nonzeros[i]
+    }
+
+    for i:=index;i<len(nums);i++{
+        nums[i]=0
+    }
+}
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 // largestitem:=findlargestNumber(5,arr)
@@ -162,5 +183,6 @@ func main()  {
  	nums:=[]int{4,1,2,1,2}
 	res:=singleNumber(nums)
 	fmt.Println(res," \nsingle number")
+	moveZeroes(nums)
 }
 
