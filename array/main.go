@@ -413,6 +413,18 @@ func twoSum(nums []int, target int) []int {
 // Given an integer array nums, find the 
 // subarray
 //  with the largest sum, and return its sum.
+// Example 1:
+// Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+// Output: 6
+// Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+func maxSubArray(nums []int)  {
+    for i:=0;i<len(nums)-1;i++{
+		for j:=i+1;j<len(nums);j++{
+			subarr:=nums[i:j]
+			fmt.Print(subarr)
+		}
+	}
+}
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 // largestitem:=findlargestNumber(5,arr)
@@ -453,7 +465,10 @@ func main()  {
 // sortColors(nums)
 
 
-nums:=[]int{2,2,1,1,1,2,2}
-majorityElement(nums)
+// nums:=[]int{2,2,1,1,1,2,2}
+// majorityElement(nums)
+
+nums:=[]int{-2,1,-3,4,-1,2,1,-5,4}
+maxSubArray(nums)
 }
 
