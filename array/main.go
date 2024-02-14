@@ -288,23 +288,131 @@ func rotateLeft(nums []int, k int)  {
 // [1,2,3,4,5,6,7]
 func OptimizerotateRight(nums []int, k int)  {
      k=k% int(len(nums))
-	 temp := make([]int, k+1)
-     copy(temp, nums[:k+1])
-    
+	 temp := []int{}
+     for i:=k;i>=1;i--{
+          temp=append(temp, nums[len(nums)-i])
+	 }
 
-	for i:=1;i<=k;i++{
-     nums[i-1]=nums[k+i]
+	 for i:=0;i<len(nums)-k;i++{
+		temp=append(temp, nums[i])
+	 }
+for i:=0;i<len(nums);i++{
+	nums[i]=temp[i]
+}
+	fmt.Print(nums)
+}
+// Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
+// We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+// You must solve this problem without using the library's sort function.
+// Example 1:
+
+// Input: nums = [2,0,2,1,1,0]
+// Output: [0,0,1,1,2,2]
+
+func sortColors(nums []int)  {
+    twos:=0
+    ones:=0
+    zeros:=0;
+fmt.Println(nums)
+    for _, num :=range nums{
+        if num==0{
+            zeros++
+        }else if num==1{
+           ones++
+        }else{
+            twos++
+        }
+    }
+
+	index:=0
+
+
+	for(index<zeros){
+nums[index]=0
+index++
+	}
+
+	for index1:=0;index1<ones; index1++{
+nums[index]=1
+index++
+
+	}
+    
+	for index2:=0;index2<twos; index2++{
+nums[index]=2
+index++
+
 	}
 	
-	// fmt.Println(nums)
-	for i:=0;i<len(temp);i++{
-		
-		nums[k+i]=temp[i]
-	}
-
- fmt.Println(nums)
+   
 }
 
+
+// Given an array nums of size n, return the majority element.
+
+// The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+
+// Example 1:
+
+// Input: nums = [3,2,3]
+// Output: 3
+
+
+func majorityElement(nums []int) int {
+    obj:=make(map[int]int)
+
+
+    for _, num :=range nums{
+        if _, exist:=obj[num] ; exist{
+			
+             obj[num]=obj[num]+1
+        }else{
+            obj[num]=1
+        }
+    }
+
+	
+  for key , value :=range obj{
+	if value>len(nums)/2{
+      return key
+	}
+  }
+
+  return 0
+}
+
+// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+// You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+// You can return the answer in any order.
+
+func twoSum(nums []int, target int) []int {
+  obj:=make(map[int]int)
+
+  for index, num:=range nums{
+         diff:=target-num
+      if j , exist:= obj[diff] ; exist{
+			return []int{index , j}
+      }
+
+      obj[num]=index
+  }
+
+   
+   
+    return []int{-1,-1}
+}
+
+
+// 53. Maximum Subarray
+// Medium
+// Topics
+// Companies
+// Given an integer array nums, find the 
+// subarray
+//  with the largest sum, and return its sum.
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 // largestitem:=findlargestNumber(5,arr)
@@ -335,10 +443,17 @@ func main()  {
 // 	longesLen:=longestSubarrayWithSumK(a,k )
 
 //     fmt.Println(longesLen)
-nums:=[]int{1,2,3,4,5,6,7}
-k:=3
+// nums:=[]int{1,2,3,4,5,6,7}
+// k:=3
 // rotateLeft(nums,k)
 // rotateRight(nums,k)
-OptimizerotateRight(nums,k)
+// OptimizerotateRight(nums,k)
+
+// nums:=[]int{2,0,2,1,1,0}
+// sortColors(nums)
+
+
+nums:=[]int{2,2,1,1,1,2,2}
+majorityElement(nums)
 }
 
