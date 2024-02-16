@@ -551,7 +551,27 @@ func rearrangeArray2(nums []int) []int {
 
  return nums
 }
+func rearrangeArray3(nums []int) []int {
+  
+	ans:=make([]int,len(nums))
+	pos:=0; neg:=1
 
+	for i:=0;i<len(nums);i++{
+		if nums[i]>=0{
+			ans[pos]=nums[i]
+            pos=pos+2
+		}else{
+			ans[neg]=nums[i]
+            neg=neg+2
+		}
+	}
+
+	
+    
+	
+
+ return ans
+}
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 // largestitem:=findlargestNumber(5,arr)
