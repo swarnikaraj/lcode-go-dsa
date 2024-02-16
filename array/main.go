@@ -417,13 +417,69 @@ func twoSum(nums []int, target int) []int {
 // Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
 // Output: 6
 // Explanation: The subarray [4,-1,2,1] has the largest sum 6.
-func maxSubArray(nums []int)  {
-    for i:=0;i<len(nums)-1;i++{
-		for j:=i+1;j<len(nums);j++{
-			subarr:=nums[i:j]
-			fmt.Print(subarr)
-		}
+func arrSum(subarr []int) int{
+	sum:=0
+ for k:=0;k<len(subarr);k++{
+            sum=sum+subarr[k]
+		  }
+		  return sum
+}
+
+func maxSubArray(nums []int)  int{
+	max:=math.MinInt
+	
+    for start:=0;start<len(nums);start++{
+		 
+             
+		for end:=start;end<len(nums);end++{
+             sum:=0
+			 for i:=start;i<=end;i++{
+               sum=sum+nums[i]
+			 }
+		  if(max<sum){
+			fmt.Println("Yes I am smaller")
+		     max=sum
+		  }
+
+			
+		 }
 	}
+   fmt.Println(max," mai zero kaise")
+	return max
+}
+
+func kadanesAlgo(nums []int) int{
+	  maxEndingHere := nums[0]
+    maxSoFar := nums[0]
+
+    for i := 1; i < len(nums); i++ {
+        maxEndingHere = int( math.Max( float64(nums[i]), float64(maxEndingHere+nums[i]) )  )
+        maxSoFar = int(math.Max(float64(maxSoFar), float64(maxEndingHere)))
+    }
+
+    return maxSoFar
+
+		
+}
+
+// 121. Best Time to Buy and Sell Stock
+// Solved
+// Easy
+// Topics
+// Companies
+// You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+// You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+// Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+func maxProfit(prices []int) int {
+    maxprofit:=0
+    min:=prices[0]
+    for i:=1 ;i<len(prices);i++{
+        min=int(math.Min(float64(prices[i-1]),float64(min)))
+        maxprofit=int(math.Max(float64(prices[i]-min),float64(maxprofit)))
+    }
+   return maxprofit 
 }
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
@@ -468,7 +524,11 @@ func main()  {
 // nums:=[]int{2,2,1,1,1,2,2}
 // majorityElement(nums)
 
-nums:=[]int{-2,1,-3,4,-1,2,1,-5,4}
-maxSubArray(nums)
+// nums:=[]int{-1}
+// sum:=maxSubArray(nums)
+// fmt.Print(sum, "max returns")
+prices:=[]int{7,1,5,3,6,4}
+profit:=maxProfit(prices)
+fmt.Print(profit," max profit")
 }
 
