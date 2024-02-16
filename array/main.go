@@ -481,6 +481,77 @@ func maxProfit(prices []int) int {
     }
    return maxprofit 
 }
+
+// 2149. Rearrange Array Elements by Sign
+// Medium
+// Topics
+// Companies
+// Hint
+// You are given a 0-indexed integer array nums of even length consisting of an equal number of positive and negative integers.
+
+// You should rearrange the elements of nums such that the modified array follows the given conditions:
+
+// Every consecutive pair of integers have opposite signs.
+// For all integers with the same sign, the order in which they were present in nums is preserved.
+// The rearranged array begins with a positive integer.
+// Return the modified array after rearranging the elements to satisfy the aforementioned conditions.
+
+func rearrangeArray(nums []int) []int {
+    pos:=[]int{}
+	
+	neg:=[]int{}
+
+	for i:=0;i<len(nums);i++{
+		if nums[i]>=0{
+			pos=append(pos, nums[i])
+		}else{
+			neg=append(neg,nums[i] )
+		}
+	}
+
+	
+    i:=0
+    j:=0
+	for k:=0;k<len(nums) ;k++{
+		if k%2==0 || k==0{
+			nums[k]=pos[i]
+            i++
+		}else{
+			nums[k]=neg[j]
+            j++
+		}
+	}
+
+ return nums
+}
+func rearrangeArray2(nums []int) []int {
+    pos:=[]int{}
+	
+	neg:=[]int{}
+
+	for i:=0;i<len(nums);i++{
+		if nums[i]>=0{
+			pos=append(pos, nums[i])
+		}else{
+			neg=append(neg,nums[i] )
+		}
+	}
+
+	
+    
+	for k:=0;k<len(nums)/2 ;k++{
+		
+			nums[2*k]=pos[k]
+           
+	
+			nums[2*k+1]=neg[k]
+           
+		
+	}
+
+ return nums
+}
+
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 // largestitem:=findlargestNumber(5,arr)
@@ -527,8 +598,12 @@ func main()  {
 // nums:=[]int{-1}
 // sum:=maxSubArray(nums)
 // fmt.Print(sum, "max returns")
-prices:=[]int{7,1,5,3,6,4}
-profit:=maxProfit(prices)
-fmt.Print(profit," max profit")
+// prices:=[]int{7,1,5,3,6,4}
+// profit:=maxProfit(prices)
+// fmt.Print(profit," max profit")
+
+
+nums:=[]int{-1,1}
+rearrangeArray((nums))
 }
 
