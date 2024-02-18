@@ -243,7 +243,7 @@ func longestSubarrayWithSumK(arr []int, K int) (int){
     
 	
    for i:=0;i<len(arr);i++{
-	for j:=i+1;j<len(arr);j++{
+	 for j:=i+1;j<len(arr);j++{
 		
        subarray:=arr[i:j]
 	   sum:=0
@@ -296,9 +296,9 @@ func OptimizerotateRight(nums []int, k int)  {
 	 for i:=0;i<len(nums)-k;i++{
 		temp=append(temp, nums[i])
 	 }
-for i:=0;i<len(nums);i++{
+   for i:=0;i<len(nums);i++{
 	nums[i]=temp[i]
-}
+     }
 	fmt.Print(nums)
 }
 // Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
@@ -572,6 +572,102 @@ func rearrangeArray3(nums []int) []int {
 
  return ans
 }
+
+// 54. Spiral Matrix
+// Medium
+// Topics
+// Companies
+// Hint
+// Given an m x n matrix, return all elements of the matrix in spiral order.
+
+func spiralOrder(matrix [][]int) []int {
+    ans:=[]int{}
+	m:=len(matrix)
+	n:=len(matrix[0])
+   left:=0;top:=0;bot:=m-1; right:=n-1
+   count:=0
+   for count<m*n{
+
+	for i:=left;i<=right && count<m*n;i++{
+		ans=append(ans,matrix[top][i])
+		count++
+       
+	}
+	top++
+
+	for j:=top;j<=bot  && count<m*n;j++{
+		ans = append(ans, matrix[j][right])
+		count++
+	}
+	right--
+
+	for k:=right;k>=left  && count<m*n;k--{
+		ans = append(ans, matrix[bot][k])
+		count++
+	}
+	bot--
+
+	for l:=bot;l>=top  && count<m*n;l--{
+		ans = append(ans, matrix[l][left])
+		count++
+	}
+	left++
+
+   }
+
+   
+  fmt.Print(ans)
+	return ans
+}
+
+
+// 48.Rotate Image
+// Medium
+// Topics
+// Companies
+// You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
+// You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+
+func rotate90(matrix [][]int)  {
+     
+    for i:=0;i<len(matrix)-1;i++{
+      for j:=i+1;j<len(matrix[0]);j++{
+        matrix[i][j],matrix[j][i]=matrix[j][i],matrix[i][j]
+      }
+    }
+  
+    for i:=0;i<len(matrix);i++{
+      row:=matrix[i]
+       index:=0; k:=len(row)-1
+     
+
+      for index<=k{
+        row[index],row[k]=row[k],row[index]
+        index++
+        k--
+      }
+
+    }
+  fmt.Print(matrix)
+}
+
+
+
+
+
+// 73. Set Matrix Zeroes
+// Medium
+// Topics
+// Companies
+// Hint
+// Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.
+
+// You must do it in place.
+
+func setZeroes(matrix [][]int)  {
+    
+}
+
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 // largestitem:=findlargestNumber(5,arr)
@@ -623,7 +719,31 @@ func main()  {
 // fmt.Print(profit," max profit")
 
 
-nums:=[]int{-1,1}
-rearrangeArray((nums))
+// nums:=[]int{-1,1}
+// rearrangeArray((nums))
+
+
+
+// [1,4,7],
+// [2,5,8],
+// [3,6,9]
+
+//[1,2,3,4,8,12,11,10,9,5,6,7]
+// spiralOrder(mat)
+
+mat:= [][]int{{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}}
+
+// 5  1  9  11
+// 2  4  8  10
+// 13 3  6   7
+// 15 14 12 16
+
+  //  5  2  13  15
+  //  1  4   3  14
+  //  9  8   6   12
+  //  11  10  7 16
+rotate90(mat) 
+
+
 }
 
