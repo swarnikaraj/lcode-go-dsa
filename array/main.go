@@ -651,7 +651,34 @@ func rotate90(matrix [][]int)  {
   fmt.Print(matrix)
 }
 
+// 560. Subarray Sum Equals K
+// Medium
+// Topics
+// Companies
+// Hint
+// Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.
 
+// A subarray is a contiguous non-empty sequence of elements within an array.
+
+func subarraySum(nums []int, k int) int {
+    sum:=0; count:=0
+    for i:=0;i<len(nums);i++{
+      sum=0;
+      for j:=i;j<len(nums);j++{
+     
+       sum=sum+nums[j]
+       fmt.Println(sum, " ", nums[i])
+       if sum==k{
+        fmt.Println(sum, "ho gya sum")
+           count++
+           sum=0
+       }
+      }
+      
+    }
+    return count
+}
+ 
 
 
 
@@ -661,12 +688,44 @@ func rotate90(matrix [][]int)  {
 // Companies
 // Hint
 // Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.
-
 // You must do it in place.
 
 func setZeroes(matrix [][]int)  {
-    
+ 
+     for i:=0;i<len(matrix);i++{
+      for j:=0; j<len(matrix[0]);j++{
+
+        if matrix[i][j]==0{
+           r:=i
+           c:=j
+         
+             for i:=0;i<len(matrix);i++{
+              if matrix[i][c] !=0{
+                matrix[i][c]=math.MaxInt
+              }
+             }
+
+             for i:=0;i<len(matrix[0]);i++{
+              if matrix[r][i] !=0{
+                matrix[r][i]=math.MaxInt
+              }
+             }
+          
+        }
+      }
+     }
+
+   
+       for i:=0;i<len(matrix);i++{
+       for j:=0; j<len(matrix[0]);j++{
+        if matrix[i][j]==math.MaxInt{
+         matrix[i][j]=0
+        }
+      }
+     }
+     
 }
+
 
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
@@ -731,7 +790,7 @@ func main()  {
 //[1,2,3,4,8,12,11,10,9,5,6,7]
 // spiralOrder(mat)
 
-mat:= [][]int{{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}}
+// mat:= [][]int{{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}}
 
 // 5  1  9  11
 // 2  4  8  10
@@ -742,8 +801,12 @@ mat:= [][]int{{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}}
   //  1  4   3  14
   //  9  8   6   12
   //  11  10  7 16
-rotate90(mat) 
+// rotate90(mat) 
+//  nums := []int{1,1,1}
+//  k := 2
+// subarraySum(nums,k)
 
-
+mat :=[][]int{{1,1,1},{1,0,1},{1,1,1}}
+setZeroes(mat)
 }
 
