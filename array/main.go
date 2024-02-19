@@ -680,6 +680,27 @@ func subarraySum(nums []int, k int) int {
 }
  
 
+func subarraySum2(nums []int, k int) int {
+    prefixsum:=0; count:=0
+    myobj:=make(map[int]int)
+    myobj[0]=1
+    for i:=0;i<len(nums);i++{
+     prefixsum=prefixsum+nums[i]
+     fmt.Println(prefixsum, " prefix sum")
+     if _, exist :=myobj[prefixsum-k] ;exist{
+      myobj[prefixsum-k]=1+myobj[prefixsum-k]
+      count=count+myobj[prefixsum-k]
+      
+     }
+     if nums[i]==k{
+      count++
+     }
+     myobj[prefixsum]=1
+    }
+    return count
+}
+ 
+
 
 
 // 73. Set Matrix Zeroes
@@ -832,8 +853,11 @@ func main()  {
 //  k := 2
 // subarraySum(nums,k)
 
-mat :=[][]int{{1,1,1},{1,0,1},{1,1,1}}
+// mat :=[][]int{{1,1,1},{1,0,1},{1,1,1}}
 // setZeroes(mat)
-setZeroes2(mat)
+// setZeroes2(mat)
+
+nums:=[]int{1,-1,0}
+subarraySum2(nums, 0)
 }
 
