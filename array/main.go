@@ -679,23 +679,22 @@ func subarraySum(nums []int, k int) int {
     return count
 }
  
-
+//prefixsum
 func subarraySum2(nums []int, k int) int {
     prefixsum:=0; count:=0
     myobj:=make(map[int]int)
     myobj[0]=1
+
     for i:=0;i<len(nums);i++{
      prefixsum=prefixsum+nums[i]
-     fmt.Println(prefixsum, " prefix sum")
-     if _, exist :=myobj[prefixsum-k] ;exist{
-      myobj[prefixsum-k]=1+myobj[prefixsum-k]
-      count=count+myobj[prefixsum-k]
-      
-     }
-     if nums[i]==k{
-      count++
-     }
-     myobj[prefixsum]=1
+    
+         toexclude:=prefixsum-k
+     
+           count=count+myobj[toexclude]
+   
+         myobj[prefixsum]=myobj[prefixsum]+1
+     
+    
     }
     return count
 }
