@@ -772,7 +772,58 @@ func setZeroes2(matrix [][]int)  {
      
 }
 
+// Problem statement
+// There is an integer array ‘a’ of size ‘n’.
+// An element is called a Superior Element if it is greater than all the elements present to its right.
+// You must return an array all Superior Elements in the array ‘a’.
+// Note:
+// The last element of the array is always a Superior Element. 
+// Example
+// Input: a = [1, 2, 3, 2], n = 4
+// Output: 2 3
+// Explanation: 
+// a[ 2 ] = 3 is greater than a[ 3 ]. Hence it is a Superior Element. 
+// a[ 3 ] = 2 is the last element. Hence it is a Superior Element.
+// The final answer is in sorted order.
 
+func leaderItems(arr []int){
+  
+}
+
+
+func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
+   res:=[]int{}    
+   i:=0 
+    j:= 0
+   for i<len(nums1) && j<len(nums2){
+       if nums1[i]<=nums2[j]{
+           res=append(res,nums1[i])
+           i++
+       }else{
+           res=append(res,nums2[j])
+           j++ 
+       }
+   }
+  
+  for i<len(nums1){
+      res=append(res,nums1[i])
+      i++
+  }
+
+   for j<len(nums2){
+      res=append(res,nums2[j])
+     j++
+  }
+
+ n:=len(res)
+ ans:=0.0000
+ if n%2==1 {
+    ans= float64(res[n/2])
+ }else{
+    ans= (float64(res[n/2])+float64(res[(n/2)-1]))/2.0000
+ }
+  return ans  
+}
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 // largestitem:=findlargestNumber(5,arr)
@@ -855,8 +906,10 @@ func main()  {
 // mat :=[][]int{{1,1,1},{1,0,1},{1,1,1}}
 // setZeroes(mat)
 // setZeroes2(mat)
-
-nums:=[]int{1,-1,0}
-subarraySum2(nums, 0)
+nums1:=[]int{1,1,1,1,1,1,1,1,1,1,4,4}
+nums2:=[]int{1,3,4,4,4,4,4,4,4,4,4}
+ findMedianSortedArrays(nums1,nums2)
+// nums:=[]int{1,-1,0}
+// subarraySum2(nums, 0)
 }
 
