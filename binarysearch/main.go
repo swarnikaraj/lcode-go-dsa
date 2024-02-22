@@ -7,9 +7,6 @@ func search(nums []int, target int) int {
 
     s:=0
     e:=len(nums)-1
-
-    
-
     for s<=e{
         m:=s + (e-s)/2
         if nums[m]==target{
@@ -27,5 +24,7 @@ func search(nums []int, target int) int {
     
 }
 func main(){
-
+nums:= []int{-1,0,3,5,9,12}
+ target := 9
+ search(nums,target)
 }

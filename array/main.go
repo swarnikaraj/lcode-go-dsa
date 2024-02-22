@@ -824,6 +824,37 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
  }
   return ans  
 }
+
+func firstMissingPositive(nums []int) int {
+  
+    largest:=0
+       myobj:=make(map[int]int)
+    for i:=0;i<len(nums);i++{
+        if nums[i]>largest{
+            largest=nums[i]
+        }
+        if nums[i]>0{
+           myobj[nums[i]]=nums[i]
+        }
+       
+    }
+
+    fmt.Println(myobj, " object")
+
+    fmt.Println(largest, "  largest")
+
+    for j:=1;j<=largest;j++{
+     
+      ans, exist:=myobj[j]
+      fmt.Println(ans,exist)
+      if(!exist){
+        return j
+      }
+     
+    }
+
+return largest+1
+}
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 // largestitem:=findlargestNumber(5,arr)
@@ -906,10 +937,12 @@ func main()  {
 // mat :=[][]int{{1,1,1},{1,0,1},{1,1,1}}
 // setZeroes(mat)
 // setZeroes2(mat)
-nums1:=[]int{1,1,1,1,1,1,1,1,1,1,4,4}
-nums2:=[]int{1,3,4,4,4,4,4,4,4,4,4}
- findMedianSortedArrays(nums1,nums2)
+// nums1:=[]int{1,1,1,1,1,1,1,1,1,1,4,4}
+// nums2:=[]int{1,3,4,4,4,4,4,4,4,4,4}
+//  findMedianSortedArrays(nums1,nums2)
 // nums:=[]int{1,-1,0}
 // subarraySum2(nums, 0)
+nums:=[]int{3,4,-1,1}
+firstMissingPositive(nums)
 }
 
