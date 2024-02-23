@@ -855,6 +855,29 @@ func firstMissingPositive(nums []int) int {
 
 return largest+1
 }
+
+func digitcal(digit int) int{
+       c:=0
+       for digit>0{
+           digit=digit/10
+           c++       }
+fmt.Print(c,"couted digi")
+           return c
+   }
+func findNumbers(nums []int) int {
+    count:=0
+
+   
+
+    for i:=0;i<len(nums);i++{
+       dc:=digitcal(nums[i])
+
+       if dc%2==0{
+           count++
+       }
+    }
+    return count
+}
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 // largestitem:=findlargestNumber(5,arr)
