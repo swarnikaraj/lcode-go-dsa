@@ -97,6 +97,22 @@ func searchInsert(nums []int, target int) int {
     return start
 }
 
+
+func searchInInfiniteArray(nums []int,target int){
+// find start and end and then binary search
+
+ start:=0
+ end:=1
+
+ for target>nums[end]{
+    newstart:=end+1
+    end=end + (end-start+1)*2
+    start=newstart
+
+ }
+ /// take start and end and do binary search
+}
+
 // greatest number smaller than target
 func floorthecel(nums []int, target int) int {
 
