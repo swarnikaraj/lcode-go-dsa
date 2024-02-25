@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
 
 // You must write an algorithm with O(log n) runtime complexity.
@@ -69,8 +71,40 @@ func searchRange(nums []int, target int) []int {
 
     return res
 }
+
+func searchInsert(nums []int, target int) int {
+
+    start:=0;
+    end:=len(nums)-1
+        if target<=nums[0]{
+            return 0
+        }
+        if target>nums[len(nums)-1]{
+            return len(nums)
+        }
+    for start<=end{
+        
+        mid:=start + (end-start)/2
+   fmt.Println(mid, "mid")
+   fmt.Println(start, "start")
+   fmt.Println(end, "end")
+        if nums[mid]==target{
+            return mid
+        }else if nums[mid]>target{
+            end=mid-1
+        }else{
+            start=mid+1
+        }
+    }
+    return start
+}
 func main(){
-nums:= []int{-1,0,3,5,9,12}
- target := 9
- search(nums,target)
+// nums:= []int{-1,0,3,5,9,12}
+//  target := 9
+//  search(nums,target)
+
+nums:=[]int{1,3}
+target:=2
+sol:=searchInsert(nums,target)
+fmt.Println(sol)
 }
