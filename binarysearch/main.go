@@ -169,7 +169,8 @@ func peakIndexInMountainArray(arr []int) int {
 
     start:=0;
     end:=len(arr)-1
-
+// try to find max
+// every point of time. we r tryign to find max. and at last we will be left with only 1 item so that would be the best possible answer
     for start<end{
         mid:=start+ (end-start)/2
 
