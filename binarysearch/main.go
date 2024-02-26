@@ -163,6 +163,26 @@ func ceilof(nums []int, target int) int {
     }
     return start // The element at 'start' will be the smallest item greater than the target
 }
+
+
+func peakIndexInMountainArray(arr []int) int {
+
+    start:=0;
+    end:=len(arr)-1
+
+    for start<end{
+        mid:=start+ (end-start)/2
+
+        if arr[mid]>arr[mid+1]{
+            // means u r in decreasing part of mountain
+            end=mid
+        }else if arr[mid]<=arr[mid+1]{
+            // means u r in increasing part of mountain
+            start=mid+1
+        }
+    }
+   return start 
+}
 func main(){
 // nums:= []int{-1,0,3,5,9,12}
 //  target := 9
