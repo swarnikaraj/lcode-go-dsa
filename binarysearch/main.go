@@ -182,15 +182,115 @@ func peakIndexInMountainArray(arr []int) int {
             start=mid+1
         }
     }
+    // at lasst all start, mid and end will be at one point. and condition breaks so u can return start, end or mid
    return start 
+}
+
+func findInMountainArray(target int, mountainArr []int) int {
+
+    // question asks for smallest index means the number should be the part of increasing portion
+    // first find the peak
+    // then make start=0 and end=peak
+    /// and search there
+
+    start:=0
+    end:=len(mountainArr)-1
+    found:=false
+    for start<end{
+        mid:=start + (end-start)/2
+        if mountainArr[mid]>=mountainArr[mid+1]{
+            end=mid
+        }else {
+            start=mid+1
+        }
+    }
+
+   peak:=start
+fmt.Println(mountainArr[peak], "found peak")
+   newstart:=0
+   newend:=peak 
+fmt.Println(mountainArr[newstart], mountainArr[newend], found, "212")
+
+   for newstart<=newend{
+        mid:=newstart + (newend-newstart)/2
+
+       if mountainArr[mid]==target{
+           found=true
+            return mid
+        }else if mountainArr[mid]>target{
+            newend=mid-1
+        }else{
+            newstart=mid+1
+        }
+
+   }
+    
+   
+   fmt.Println(mountainArr[newstart], mountainArr[newend], found,"229")
+
+   newstart=peak
+   newend=len(mountainArr)-1
+
+   fmt.Println(mountainArr[newstart], mountainArr[newend], found,"234")
+
+if !found{
+for newstart<=newend{
+        mid:=newstart + (newend-newstart)/2
+
+       if mountainArr[mid]==target{
+            return mid
+        }else if mountainArr[mid]>target{
+            newstart=mid+1
+            
+        }else{
+            newend=mid-1
+        }
+
+   }
+}
+   
+
+   return -1
+}
+
+
+func findPivot(nums []int)int{
+    start:=0
+    end:=len(nums)-1
+
+    for start<=end{
+        mid:=start + (end-start)/2
+
+        if nums[mid]>nums[mid+1] && mid<end{
+            return mid
+        }
+        if nums[mid]<nums[mid-1] && mid>start{
+            return mid-1
+        }
+        if start>mid{
+            end=mid-1
+        }else{
+            start=mid+1
+        }
+    }
+
+    return -1
 }
 func main(){
 // nums:= []int{-1,0,3,5,9,12}
 //  target := 9
 //  search(nums,target)
 
-nums:=[]int{1,3}
-target:=2
-sol:=searchInsert(nums,target)
+// nums:=[]int{1,3}
+// target:=2
+// sol:=searchInsert(nums,target)
+// fmt.Println(sol)
+// target:=2
+// nums:=[]int{1,5,2}
+// sol:=findInMountainArray(target,nums)
+// fmt.Println(sol)
+
+nums:=[]int{6,7,8,1,2,3,4,5}
+sol:=findPivot(nums)
 fmt.Println(sol)
 }
