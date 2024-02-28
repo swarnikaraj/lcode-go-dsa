@@ -447,6 +447,30 @@ func maxSubArray(nums []int)  int{
    fmt.Println(max," mai zero kaise")
 	return max
 }
+
+func isPalindrome(s string) bool {
+
+   reg := regexp.MustCompile("[^a-zA-Z0-9]+")
+
+
+    st:=reg.ReplaceAllString(s,"")
+    str:=strings.ToLower(st)
+
+    fmt.Print(str)
+
+    i:=0
+    j:=len(str)-1
+
+    for i<j{
+        if str[i]!=str[j]{
+            return false
+        }
+        i++
+        j--
+    }
+
+    return true
+}
 func isSubsequence(s string, t string) bool {
     i:=0
     j:=0
