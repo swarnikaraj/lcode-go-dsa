@@ -447,7 +447,20 @@ func maxSubArray(nums []int)  int{
    fmt.Println(max," mai zero kaise")
 	return max
 }
+func isSubsequence(s string, t string) bool {
+    i:=0
+    j:=0
 
+    for i<len(s) && j<len(t){
+        if s[i]==t[j]{
+            i++
+        }
+
+        j++
+    }
+
+    return i==len(s)
+}
 func kadanesAlgo(nums []int) int{
 	  maxEndingHere := nums[0]
     maxSoFar := nums[0]
