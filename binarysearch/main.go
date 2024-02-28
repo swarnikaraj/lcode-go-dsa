@@ -299,6 +299,30 @@ func findMin(nums []int) int {
 
     return nums[0]
 }
+
+func singleNonDuplicate(nums []int) int {
+   start := 0
+    end := len(nums) - 1
+
+    for start < end {
+        mid := start + (end-start)/2
+
+        // Ensure mid is even to maintain pairs
+        if mid%2 == 1 {
+            mid--
+        }
+
+        // Check if the single element is on the right or left side of mid
+        if nums[mid] != nums[mid+1] {
+            end = mid
+        } else {
+            start = mid + 2
+        }
+    }
+
+    // At this point, left and right pointers converge to the single element
+    return nums[start]
+}
 func main(){
 // nums:= []int{-1,0,3,5,9,12}
 //  target := 9
