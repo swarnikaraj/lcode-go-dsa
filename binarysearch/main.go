@@ -253,6 +253,72 @@ for newstart<=newend{
    return -1
 }
 
+func rotatedsearch(nums []int, target int) int {
+  start:=0
+end:=len(nums)-1
+
+  bs:=func (nums []int, target int, start int, end int) int{
+
+        for start<=end{
+            mid:=start + (end-start)/2
+
+            if nums[mid]==target{
+                return mid
+            }
+           if nums[mid]>target{
+          end=mid-1
+            }else{
+                start=mid+1
+            }
+        }
+return -1
+    }
+    
+  findpivot:= func(nums []int) int {
+      start:=0
+      end:=len(nums)-1
+
+      for start<=end{
+           mid:=start + (end-start)/2
+          if mid<end && nums[mid]>nums[mid+1]{
+              return mid
+          }
+
+          if mid>start && nums[mid]<nums[mid-1]{
+              return mid-1
+          }
+
+          if nums[start]>nums[mid]{
+              end=mid-1
+          }else{
+              start=mid+1
+          }
+
+      }
+  return -1
+  }
+ 
+ pivot:=findpivot(nums)
+ fmt.Println(pivot, "pivot hu")
+if pivot !=-1{
+   if nums[pivot]==target{
+     return pivot
+ }
+ if nums[start]==target{
+     return start
+ }else if nums[start]>target{
+     ans:=bs(nums,target,pivot+1,end)
+     return ans
+ }else{
+     ans:=bs(nums,target,0, pivot)
+     return ans
+ }
+ }
+ fmt.Println("Pivot was", pivot)
+  ans:=bs(nums,target,0,end)
+
+return ans
+}
 
 func findPivot(nums []int)int{
     start:=0
@@ -323,6 +389,84 @@ func singleNonDuplicate(nums []int) int {
     // At this point, left and right pointers converge to the single element
     return nums[start]
 }
+
+func searchInsoretedRepeated(nums []int, target int) int {
+  start:=0
+  end:=len(nums)-1
+
+  bs:=func (nums []int, target int, start int, end int) int{
+
+        for start<=end{
+            mid:=start + (end-start)/2
+
+            if nums[mid]==target{
+                return mid
+            }else if nums[mid]>target{
+                end=mid-1
+            }else{
+                start=mid+1
+            }
+        }
+return -1
+    }
+    
+  findpivot:= func(nums []int) int {
+      start:=0
+      end:=len(nums)-1
+
+      for start<=end{
+           mid:=start + (end-start)/2
+           
+          if mid<end && nums[mid]>nums[mid+1]{
+              return mid
+          }
+
+          if mid>start && nums[mid]<nums[mid-1]{
+              return mid-1
+          }
+
+         if nums[start]==nums[mid] && nums[mid]==nums[end]{
+
+
+             if nums[start]>nums[start+1]{
+                 return start
+             }
+             start++
+             if nums[end]<nums[end-1]{
+                 return end-1
+             }
+             end--
+         }else if nums[start]>=nums[mid] && nums[start]>nums[end]{
+             start=mid+1
+         }else{
+             end=end-1
+         }
+
+      }
+  return -1
+  }
+ 
+ pivot:=findpivot(nums)
+ fmt.Println(pivot, "pivot hu")
+if pivot !=-1{
+   if nums[pivot]==target{
+     return pivot
+ }
+ if nums[start]==target{
+     return start
+ }else if nums[start]>target{
+     ans:=bs(nums,target,pivot+1,end)
+     return ans
+ }else{
+     ans:=bs(nums,target,0, pivot)
+     return ans
+ }
+ }
+ fmt.Println("Pivot was", pivot)
+  ans:=bs(nums,target,0,end)
+
+return ans
+}
 func main(){
 // nums:= []int{-1,0,3,5,9,12}
 //  target := 9
@@ -337,7 +481,9 @@ func main(){
 // sol:=findInMountainArray(target,nums)
 // fmt.Println(sol)
 
-nums:=[]int{6,7,8,1,2,3,4,5}
-sol:=findPivot(nums)
+nums:=[]int{1,2,3,4,5,6,7,8}
+// sol:=findPivot(nums)
+// fmt.Println(sol)
+sol:=rotatedsearch(nums, 4)
 fmt.Println(sol)
 }
