@@ -343,6 +343,23 @@ func findPivot(nums []int)int{
     return -1
 }
 
+func searchMatrix(matrix [][]int, target int) bool {
+   row:=0
+   col:=len(matrix[0])-1
+
+   for row<len(matrix) && col>=0{
+       elm:=matrix[row][col]
+       if target<elm{
+           col--
+       }else if target>elm{
+           row++
+       }else{
+           return true
+       }
+   } 
+
+   return false
+}
 func findMin(nums []int) int {
   start:=0
     end:=len(nums)-1
