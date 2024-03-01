@@ -487,6 +487,23 @@ func isSubsequence(s string, t string) bool {
 
     return i==len(s)
 }
+func findDuplicate(nums []int) int {
+  res:=0
+    numcount := make(map[int]int)
+    for _, nm := range nums {
+        numcount[nm]++
+    }
+   for key, value:=range numcount{
+      if value!=1{
+          res=key
+          break
+      }
+   }
+    fmt.Println(numcount)
+
+   
+    return res
+}
 func kadanesAlgo(nums []int) int{
 	  maxEndingHere := nums[0]
     maxSoFar := nums[0]
