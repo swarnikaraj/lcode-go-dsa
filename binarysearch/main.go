@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 // Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
 
@@ -484,6 +487,91 @@ if pivot !=-1{
 
 return ans
 }
+
+
+func squareroot( n int) int {
+   start:=0
+   end:=n
+
+   for start<=end{
+
+    mid:=start + (end-start)/2
+
+    if mid*mid ==n{
+        return mid
+    }
+    if mid*mid<n{
+        start=mid+1
+    }else{
+        end=mid-1
+    }
+   }
+
+   return -1
+}
+
+func expo(base int, power int){
+    ans:=1
+
+    for power>0{
+        ans=ans*base
+        power--
+    }
+}
+func totalhours(hr int, piles []int) int {
+    totalhour := 0
+    for i := 0; i < len(piles); i++ {
+        totalhour += int(math.Ceil(float64(piles[i]) / float64(hr)))
+    }
+    return totalhour
+}
+
+func minEatingSpeed(piles []int, h int) int {
+    max := piles[0]
+    for i := 1; i < len(piles); i++ {
+        if piles[i] > max {
+            max = piles[i]
+        }
+    }
+
+    start := 1
+    end := max
+
+    for start < end {
+        mid := start + (end - start) / 2
+        totalhr := totalhours(mid, piles)
+        if totalhr <= h {
+            end = mid
+        } else {
+            start = mid + 1
+        }
+    }
+    return start
+}
+
+func nthroot( n int, m int) int {
+   start:=1
+   end:=m
+
+   for start<=end{
+
+    mid:=start + (end-start)/2
+
+    if m==int(math.Pow(float64(mid), float64(n))){
+        return mid
+    }
+    if m<int(math.Pow(float64(mid), float64(n))){
+        end=mid-1
+       
+    }else{
+         start=mid+1
+    }
+
+   }
+
+   return -1
+}
+
 func main(){
 // nums:= []int{-1,0,3,5,9,12}
 //  target := 9
@@ -498,9 +586,13 @@ func main(){
 // sol:=findInMountainArray(target,nums)
 // fmt.Println(sol)
 
-nums:=[]int{1,2,3,4,5,6,7,8}
+// nums:=[]int{1,2,3,4,5,6,7,8}
 // sol:=findPivot(nums)
 // fmt.Println(sol)
-sol:=rotatedsearch(nums, 4)
+// sol:=rotatedsearch(nums, 4)
+
+// sol:=squareroot(25)
+
+sol:=nthroot(3,64)
 fmt.Println(sol)
 }
