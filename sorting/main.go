@@ -72,7 +72,7 @@ func cyclicSort(arr []int){
        value:=arr[i]
 		index:=value-1
 
-		if(i==index){
+		if(i==arr[index]){
 			i++
 		}else{
            arr[i], arr[index]=arr[index],arr[i]
