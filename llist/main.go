@@ -47,11 +47,42 @@ func (ll *LinkedList) appendAtFirst(data int){
 func (ll *LinkedList) printll(){
 	curr:=ll.head
 	for curr.next!=nil{
-		fmt.Printf("node val= %v node next = %v",curr.data, curr.next)
+		fmt.Printf("node data= %v node next = %v",curr.data, curr.next)
 		curr=curr.next
 	}
 	fmt.Println()
 
+}
+
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     data int
+ *     next *ListNode
+ * }
+ */
+func removeElements(head *Node, data int) *Node {
+    for head != nil && head.data == data {
+        head = head.next
+    }
+    
+    if head == nil {
+        return nil
+    }
+    
+    prev := head
+    curr := head.next
+    
+    for curr != nil {
+        if curr.data == data {
+            prev.next = curr.next
+        } else {
+            prev = curr
+        }
+        curr = curr.next
+    }
+    
+    return head
 }
 func main() {
 	ll := LinkedList{}
