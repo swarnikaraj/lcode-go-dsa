@@ -13,7 +13,7 @@ type LinkedList struct {
 	size int
 }
 
-func (ll *LinkedList) appendData(data int){
+func (ll *LinkedList) AppendData(data int){
       newnode:=&Node{data:data}
 
       if ll.head==nil{
@@ -30,7 +30,7 @@ func (ll *LinkedList) appendData(data int){
 	ll.tail=newnode
 }
 
-func (ll *LinkedList) appendAtFirst(data int){
+func (ll *LinkedList) AppendAtFirst(data int){
 	newnode:= &Node{data:data}
 
 	if ll.head==nil{
@@ -39,6 +39,9 @@ func (ll *LinkedList) appendAtFirst(data int){
 	}else{
 		newnode.next=ll.head
 		ll.head=newnode
+	}
+	if ll.tail==nil{
+		ll.tail=newnode
 	}
 	ll.size++
 }
@@ -84,12 +87,37 @@ func removeElements(head *Node, data int) *Node {
     
     return head
 }
+
+func (ll *LinkedList)addElementAt(index int, data int){
+	
+	if index==0{
+       ll.AppendAtFirst(data)
+	   return
+	}else if index==ll.size{
+		ll.AppendData(data)
+	}else{
+     
+     temp:=ll.head
+	 for i:=1;i<index;i++{
+     temp=temp.next
+	 }
+     newnode:=&Node{data:data, next: temp.next}
+	  temp.next=newnode
+	}
+    
+
+
+	
+}
+
+
 func main() {
 	ll := LinkedList{}
-   ll.appendData(1)
-    ll.appendData(2)
-	ll.appendData(3)
-	ll.appendAtFirst(5)
-	// fmt.Println((ll))
+   ll.AppendData(1)
+    ll.AppendData(2)
+	ll.AppendData(3)
+	ll.AppendAtFirst(5)
+	ll.addElementAt(3,86)
+//  fmt.Println((ll))
 	ll.printll()
 }
