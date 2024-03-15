@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 type Stack struct {
 	size        int
@@ -16,15 +19,18 @@ func (st *Stack) addItem(n int) bool {
 	st.CustomStack[st.ptr] = n
 	return true
 }
-func (st *Stack) removeItem() bool {
+func (st *Stack) removeItem() int {
 	if st.ptr < 0 {
-		return false
+		log.Fatal("Empty stack")
 	}
 	st.ptr--
-	return true
+	return st.CustomStack[st.ptr]
 
 }
 func (st *Stack) peekItem() int {
+	if st.ptr==-1{
+		log.Fatal("Empty stack")
+	}
 
 	return st.CustomStack[st.ptr]
 }
@@ -42,5 +48,5 @@ func main() {
 	newstack.removeItem()
 	fmt.Println(newstack.peekItem())
 	fmt.Println(newstack.CustomStack)
-
+    
 }
