@@ -35,7 +35,10 @@ func main() {
 	newstack.addItem(1)
 	newstack.addItem(2)
 	newstack.addItem(3)
-
+    newstack.addItem(2)
+	newstack.addItem(3)
+	newstack.addItem(1)
+	newstack.addItem(2)
 	newstack.removeItem()
 	fmt.Println(newstack.peekItem())
 	fmt.Println(newstack.CustomStack)
