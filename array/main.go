@@ -1004,6 +1004,28 @@ i:=0
     return len(nums)
 }
 
+func containsNearbyDuplicate(nums []int, k int) bool {
+    obj:=make(map[int]int)
+
+    for i:=0;i<len(nums);i++{
+        if mapp, ok:=obj[nums[i]];ok{
+           if int(math.Abs(float64(i)- float64(mapp)))>=k{
+              return true
+            }else{
+              obj[nums[i]]=i
+          }
+            
+            
+           
+        }else{
+            obj[nums[i]]=i
+        }
+    }
+
+    return false
+}
+
+
 func main()  {
 // arr:=[]int{1 ,2, 8, 6 ,7 ,6 }
 // largestitem:=findlargestNumber(5,arr)
