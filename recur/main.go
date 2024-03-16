@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Sum triangle from array
 // Given an array of integers, print a sum triangle from it such that the first level has all array elements. From then, at each level number of elements is one less than the previous level and elements at the level is be the Sum of consecutive two elements in the previous level.
@@ -36,7 +38,50 @@ func printTriangle(arr []int) {
 	fmt.Println(arr)
 }
 
+
+// Recursive Programs to find Minimum and Maximum elements of array
+// Given an array of integers arr, the task is to find the minimum and maximum element of that array using recursion.
+
+func recurivemax(start int, arr []int, max int) int{
+	if start==len(arr){
+	return max
+    }
+  if arr[start]>max{
+	max=arr[start]
+  }
+   return recurivemax(start+1,arr,max)
+}
+func findMax(arr []int) int{
+ start:=0
+ max:=arr[0]
+sol:=recurivemax(start,arr,max)
+return sol
+}
+
+// Program to check if an array is sorted or not (Iterative and Recursive)
+// Given an array of size n, write a program to check if it is sorted in ascending order or not. Equal values are allowed in an array and two consecutive equal values are considered sorted.
+
+func recursivecheck(start int, end int, arr []int) bool{
+	if start==end{
+		return true
+	}
+
+   if arr[start]<arr[start-1]{
+	return false
+   }
+   return recursivecheck(start +1,end, arr)
+}
+func checkIfSortedArr(arr []int){
+  start:=1
+  end:=len(arr)
+  sol:=recursivecheck(start, end, arr )
+  fmt.Println(sol)
+}
+
 func main() {
 	nums := []int{1, 2, 3, 4, 5}
 printTriangle(nums)
+fmt.Println(findMax(nums))
+checkIfSortedArr(nums)
+
 }
