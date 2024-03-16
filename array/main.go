@@ -1013,9 +1013,7 @@ func containsNearbyDuplicate(nums []int, k int) bool {
               return true
             }else{
               obj[nums[i]]=i
-          }
-            
-            
+          }            
            
         }else{
             obj[nums[i]]=i
