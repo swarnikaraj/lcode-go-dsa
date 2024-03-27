@@ -78,10 +78,78 @@ func checkIfSortedArr(arr []int){
   fmt.Println(sol)
 }
 
+
+func  bubblesortIterative(arr []int){
+
+ for i:=0;i<len(arr);i++{
+    for j:=1;j<len(arr)-i;j++{
+        if arr[j]<arr[j-1]{
+            arr[j],arr[j-1]=arr[j-1],arr[j]
+        }
+    }
+ }
+ 
+  
+}
+
+
+func bubblesort(arr []int, i int, j int){
+     if i==len(arr){
+		return
+	 }
+    if j<len(arr)-i{
+
+		if arr[j]<arr[j-1]{
+            arr[j],arr[j-1]=arr[j-1],arr[j]
+        }
+      bubblesort(arr , i, j+1)
+	}else{
+     bubblesort(arr , i+1, 1)
+	}   
+}
+
+
+func selectionsortIterative(arr []int){
+
+	for i:=0;i<len(arr)-1;i++{
+		min:=i
+		for j:=i+1;j<len(arr);j++{
+           if arr[j]<arr[min]{
+			min=j
+		   }
+		}
+		arr[i],arr[min]=arr[min],arr[i]
+	}
+}
+func selectionsort(arr []int, i int , j int, max int){
+   if i==0{
+	return
+   }
+   if j<i{
+	
+	if arr[j]>arr[max]{
+	 selectionsort(arr, i, j+1, j)
+	}else{
+	 selectionsort(arr, i, j+1, max)
+	}
+	 
+   }else{
+    arr[i-1],arr[max]=arr[max],arr[i-1]
+	selectionsort(arr, i-1 , 0, 0)
+   }
+}
+
+func mergeSort(){
+	
+}
+
 func main() {
-	nums := []int{1, 2, 3, 4, 5}
-printTriangle(nums)
-fmt.Println(findMax(nums))
-checkIfSortedArr(nums)
+	nums := []int{1, 4, 5, 3, 2}
+
+	// selectionsort(nums,len(nums),0,0)
+	// fmt.Println(nums)
+// printTriangle(nums)
+// fmt.Println(findMax(nums))
+// checkIfSortedArr(nums)
 
 }

@@ -69,7 +69,7 @@ func printAllDivisor2(n int){
 			fmt.Println(i)
 
 			if n/i!=i{
-fmt.Println(n/i)
+              fmt.Println(n/i)
 			}
 			
 		}
@@ -121,6 +121,11 @@ func euclidianAlgo(n1 int, n2 int){
 		fmt.Print(n1)
 	}
 }
+
+// reverse a number without converting to a string
+
+
+
 func main() {
 countDigits1(326978967)
 countDigits2(326978967)
