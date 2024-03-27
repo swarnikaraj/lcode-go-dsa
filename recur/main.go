@@ -140,11 +140,11 @@ func selectionsort(arr []int, i int , j int, max int){
 }
 
 func mergeSort(){
-	
+
 }
 
 func main() {
-	nums := []int{1, 4, 5, 3, 2}
+	// nums := []int{1, 4, 5, 3, 2}
 
 	// selectionsort(nums,len(nums),0,0)
 	// fmt.Println(nums)
