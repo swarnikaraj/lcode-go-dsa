@@ -139,15 +139,57 @@ func selectionsort(arr []int, i int , j int, max int){
    }
 }
 
-func mergeSort(){
+func merge( left []int , right []int ) []int{
+	n:=len(left)
+	m:=len(right)
+    i:=0
+    j:=0
+	ans:=make([]int,n+m)
+	k:=0
+  for i<n && j<m{
+        if left[i]<right[j]{
+			ans[k]=left[i]
+			i++
+		}else{
+			ans[k]=right[j]
+			j++
+		}
+		k++
+  }
 
+  for i<n{
+	ans[k]=left[i]
+	k++
+	i++
+  }
+   for j<m{
+	ans[k]=right[j]
+	k++
+	j++
+  }
+
+  return ans
+  
+}
+func mergeSort(arr []int) []int{
+	// s:=0
+	// e:=len(arr)-1
+	// mid:=s + (e-s)/2
+	if len(arr) <= 1 {return arr}
+	mid:=len(arr)/2
+ 
+  left:=mergeSort(arr[:mid])
+  right:=mergeSort(arr[mid:])
+
+  return merge(left, right)
 }
 
 func main() {
-	// nums := []int{1, 4, 5, 3, 2}
+	 nums := []int{1, 4, 5, 3, 2}
+res:=mergeSort(nums)
 
 	// selectionsort(nums,len(nums),0,0)
-	// fmt.Println(nums)
+	fmt.Println(res)
 // printTriangle(nums)
 // fmt.Println(findMax(nums))
 // checkIfSortedArr(nums)
