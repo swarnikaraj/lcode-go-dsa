@@ -184,12 +184,40 @@ func mergeSort(arr []int) []int{
   return merge(left, right)
 }
 
+func quicksort(low int, high int, arr []int){
+  if low>=high{
+	return
+  }
+  s:=low
+  e:=high
+
+  mid:=s+ (e-s)/2
+  pivot:=arr[mid]
+
+  for s<=e{
+
+	for arr[s]<pivot{
+		s++
+	}
+	for arr[e]>pivot{
+		e--
+	}
+	if(s<=e){
+		arr[e],arr[s]=arr[s],arr[e]
+		s++
+		e--
+	}
+  }
+  quicksort(low,e, arr)
+  quicksort(s,high, arr)
+
+}
 func main() {
 	 nums := []int{1, 4, 5, 3, 2}
-res:=mergeSort(nums)
-
+// res:=mergeSort(nums)
+quicksort(0,len(nums)-1,nums)
 	// selectionsort(nums,len(nums),0,0)
-	fmt.Println(res)
+	fmt.Println(nums)
 // printTriangle(nums)
 // fmt.Println(findMax(nums))
 // checkIfSortedArr(nums)
