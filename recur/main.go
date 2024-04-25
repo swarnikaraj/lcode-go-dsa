@@ -221,5 +221,6 @@ quicksort(0,len(nums)-1,nums)
 // printTriangle(nums)
 // fmt.Println(findMax(nums))
 // checkIfSortedArr(nums)
+fmt.Println(('a'+0))
 
 }

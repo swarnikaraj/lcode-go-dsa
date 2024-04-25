@@ -199,18 +199,16 @@ func recursivePalindrome(str string) bool{
 
 func fibonacciHelper(n int) int{
 	if n==0{
-		return 0}
+		return 0
+	}
    if n==1{
-	
 	return 0
    }
    if n==2{
-	
 	return 1
    }
 
    currentNum:=fibonacciHelper(n-1) + fibonacciHelper(n-2)
-   
    
    return currentNum
 	
